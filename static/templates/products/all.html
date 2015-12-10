@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ol>
+{% for product in products %}
+
+<!-- 
+
+这部分{% url "all_products" %}连接到url(r'^$', 'list_all', name="all_products"),
+
+-->
+<li>
+{% for image in product.productimage_set.all %}
+{% if image.featured_image %}
+<img src="{{ MEDIA_URL }}{{ image.image }}" width='300' />
+{% endif %}
+{% endfor %}
+<a href="{% url "single_product" product.slug %}">{{product}}</a>
+
+</li>
+
+
+{% endfor %}
+
+
+{{products}}
+</ol>
+
+{% endblock %}

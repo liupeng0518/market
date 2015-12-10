@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Edit {{ instance.title }}</h1>
+
+
+<form method="POST" action="">{% csrf_token %}
+	<!--Django 原生支持一个简单易用的跨站请求伪造的防护。
+		当提交一个启用CSRF 防护的POST 表单时，
+		你必须使用上面例子中的csrf_token 模板标签。 
+
+		对于<label>/<input> 对，还有几个输出选项：
+
+		{{ form.as_table }} 以表格的形式将它们渲染在<tr> 标签中
+		{{ form.as_p }}  将它们渲染在<p> 标签中
+		{{ form.as_ul }} 将它们渲染在<li> 标签中
+	-->
+	{{ form.as_p }}
+<input type="submit" value="Save edit">
+
+</form>
+{% endblock %}

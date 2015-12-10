@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ product }}</h1>
+
+{% for abc in images %}
+<img src="{{ MEDIA_URL }}{{ abc.image }}" width='200' />
+{% endfor %}
+
+
+<ul>
+{% for category in categories %}
+
+<li>{{ category }}</li>
+
+{% endfor %}
+</ul>
+
+{% if edit %}
+<a href='#'> Edit this Product</a>
+{% endif %}
+{% endblock %}
