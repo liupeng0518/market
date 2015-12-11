@@ -3,15 +3,16 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
-# from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage
 
-# protected_loc = settings.PROTECTED_UPLOADS
+protected_loc = settings.PROTECTED_UPLOADS
 
-# def download_loc(instance, filename):
-#     if instance.user.username:
-#         return "%/download%" %(instance.user.username, filename)
-#     else:
-#         return "%/download%" %("default", filename)
+
+def download_loc(instance, filename):
+    if instance.user.username:
+        return "%s/download/%s" % (instance.user.username, filename)
+    else:
+        return "%s/download/%s" % ("default", filename)
 # Create your models here.
 
 
@@ -19,8 +20,8 @@ class Product(models.Model):
     user = models.ForeignKey(User, null=True, blank=True)
     title = models.CharField(max_length=180)
     description = models.CharField(max_length=500)
-    # download = models.FileField(upload_to=download_loc, storage=FileSystemStorage(
-        # location=protected_loc), null=True)
+    download = models.FileField(upload_to=download_loc, storage=FileSystemStorage(
+        location=protected_loc), null=True)
     price = models.DecimalField(max_digits=20, decimal_places=2)
     sale_price = models.DecimalField(
         max_digits=20, decimal_places=2, null=True, blank=True)
