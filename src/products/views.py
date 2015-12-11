@@ -2,12 +2,18 @@
 
 from django.shortcuts import render_to_response, RequestContext, Http404, render, HttpResponseRedirect
 from django.template.defaultfilters import slugify
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 from django.forms.models import modelformset_factory
 from .models import Product, Category, ProductImage
 from .forms import ProductForm, ProductImageForm
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 # Create your views here.
 
 def list_all(request):
@@ -15,6 +21,10 @@ def list_all(request):
     products = Product.objects.filter(active=True)
 
     return render_to_response("products/all.html", locals(), context_instance=RequestContext(request))
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
     # render实现
     # return render(request, "products/all.html", locals())
 
